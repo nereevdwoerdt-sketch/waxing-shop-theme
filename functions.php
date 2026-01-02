@@ -288,14 +288,51 @@ add_action('wp_head', function() {
 }, 1);
 
 /**
- * Add defer to main script for performance
+ * Add defer to scripts for performance
  */
 add_filter('script_loader_tag', function($tag, $handle) {
-    if ($handle === 'waxing-main') {
+    // Scripts that should be deferred
+    $defer_scripts = array('waxing-main', 'wc-add-to-cart', 'woocommerce', 'wc-cart-fragments');
+
+    if (in_array($handle, $defer_scripts) && strpos($tag, 'defer') === false) {
         return str_replace(' src', ' defer src', $tag);
     }
     return $tag;
 }, 10, 2);
+
+// Remove jQuery migrate in production (saves ~10KB)
+add_action('wp_default_scripts', function($scripts) {
+    if (!is_admin() && isset($scripts->registered['jquery'])) {
+        $script = $scripts->registered['jquery'];
+        if ($script->deps) {
+            $script->deps = array_diff($script->deps, array('jquery-migrate'));
+        }
+    }
+});
+
+// Add resource hints for third-party domains
+add_action('wp_head', function() {
+    $hints = array(
+        'dns-prefetch' => array(
+            '//fonts.gstatic.com',
+            '//www.google-analytics.com',
+            '//www.googletagmanager.com',
+        ),
+        'preconnect' => array(
+            'https://fonts.gstatic.com',
+        ),
+    );
+
+    foreach ($hints as $rel => $urls) {
+        foreach ($urls as $url) {
+            if ($rel === 'preconnect') {
+                echo '<link rel="' . esc_attr($rel) . '" href="' . esc_url($url) . '" crossorigin>' . "\n";
+            } else {
+                echo '<link rel="' . esc_attr($rel) . '" href="' . esc_attr($url) . '">' . "\n";
+            }
+        }
+    }
+}, 0);
 
 /**
  * Custom Nav Walker for adding nav-link class to menu items
