@@ -1509,6 +1509,128 @@
     font-size: 20px;
 }
 
+/* Payment Methods Bar */
+.footer-payments-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px var(--spacing-xl);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 32px;
+}
+
+.payment-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+}
+
+.payment-icons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.payment-icon {
+    height: 26px;
+    width: auto;
+    opacity: 0.85;
+    transition: opacity var(--transition-fast);
+}
+
+.payment-icon:hover {
+    opacity: 1;
+}
+
+/* Footer Bottom Improved */
+.footer-bottom {
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--text-xs, 12px);
+    color: rgba(255,255,255,0.45);
+}
+
+.footer-bottom-left p {
+    margin: 0 0 4px;
+}
+
+.footer-return-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    transition: color var(--transition-fast);
+}
+
+.footer-return-link:hover {
+    color: var(--sage);
+}
+
+.footer-return-link svg {
+    flex-shrink: 0;
+}
+
+/* Cart Shipping Progress Bar */
+.cart-shipping-info {
+    background: var(--cream);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    margin-top: 16px;
+}
+
+.shipping-progress {
+    font-size: 14px;
+    color: var(--dark);
+    margin: 0 0 8px;
+}
+
+.shipping-progress strong {
+    color: var(--sage-dark);
+}
+
+.shipping-progress-bar {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.shipping-progress-fill {
+    height: 100%;
+    background: var(--sage);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.shipping-free {
+    color: var(--success);
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width: 768px) {
+    .footer-payments-bar {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+}
+
 /* ========== PAGINATION ========== */
 .pagination { display: flex; justify-content: center; gap: 6px; margin-top: 48px; }
 .page-btn { width: 40px; height: 40px; border: 1px solid var(--border); background: white; border-radius: var(--radius-md); font-size: 13px; font-weight: 600; transition: all var(--transition-fast); }
