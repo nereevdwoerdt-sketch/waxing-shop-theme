@@ -74,12 +74,12 @@ get_header();
 
 <!-- Quiz Section -->
 <section id="quiz" class="quiz-section section" aria-labelledby="quiz-title">
-    <div class="section-header reveal" style="text-align:center;margin-bottom:40px;">
-        <p class="section-eyebrow" style="justify-content:center;"><?php esc_html_e('Persoonlijk advies', 'waxing-shop'); ?></p>
+    <div class="section-header section-header--centered reveal">
+        <p class="section-eyebrow section-eyebrow--centered"><?php esc_html_e('Persoonlijk advies', 'waxing-shop'); ?></p>
         <h2 class="section-title" id="quiz-title"><?php esc_html_e('Welke wax past bij jou?', 'waxing-shop'); ?></h2>
-        <p class="section-subtitle" style="margin:16px auto 0;"><?php esc_html_e('Beantwoord 4 vragen en ontdek jouw perfecte match.', 'waxing-shop'); ?></p>
+        <p class="section-subtitle section-subtitle--centered"><?php esc_html_e('Beantwoord 4 vragen en ontdek jouw perfecte match.', 'waxing-shop'); ?></p>
     </div>
-    
+
     <div class="reveal">
         <?php echo do_shortcode('[wax_quiz]'); ?>
     </div>
@@ -87,11 +87,11 @@ get_header();
 
 <!-- Testimonials Section -->
 <section id="reviews" class="reviews-section section" aria-labelledby="reviews-title">
-    <div class="section-header reveal" style="text-align:center;margin-bottom:60px;">
-        <p class="section-eyebrow" style="justify-content:center;"><?php esc_html_e('9.0 op Bol.com', 'waxing-shop'); ?></p>
+    <div class="section-header section-header--centered reveal">
+        <p class="section-eyebrow section-eyebrow--centered"><?php esc_html_e('9.0 op Bol.com', 'waxing-shop'); ?></p>
         <h2 class="section-title" id="reviews-title"><?php esc_html_e('Waarom klanten fan zijn', 'waxing-shop'); ?></h2>
     </div>
-    
+
     <div class="reveal">
         <?php echo do_shortcode('[testimonials]'); ?>
     </div>
