@@ -1,0 +1,54 @@
+{
+  "name": "waxing-shop-theme",
+  "version": "3.1.0",
+  "description": "Premium WooCommerce theme for waxing-shop.nl",
+  "author": "Waxing Shop",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "cleancss -o css/style.min.css style.css css/components.css css/quiz.css css/shop.css",
+    "build:js": "terser js/main.js -o js/main.min.js -c -m",
+    "watch": "npm-watch",
+    "lint:css": "stylelint '**/*.css' --fix",
+    "lint:js": "eslint js/*.js --fix",
+    "pot": "wp i18n make-pot . languages/waxing-shop.pot --domain=waxing-shop"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "terser": "^5.26.0",
+    "npm-watch": "^0.11.0",
+    "stylelint": "^16.1.0",
+    "stylelint-config-standard": "^36.0.0",
+    "eslint": "^8.56.0"
+  },
+  "watch": {
+    "build:css": {
+      "patterns": ["css/**/*.css", "style.css"],
+      "extensions": "css"
+    },
+    "build:js": {
+      "patterns": ["js/**/*.js"],
+      "extensions": "js"
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "selector-class-pattern": null,
+      "no-descending-specificity": null
+    }
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "jquery": true,
+      "es2021": true
+    },
+    "globals": {
+      "waxingShop": "readonly"
+    },
+    "rules": {
+      "no-unused-vars": "warn"
+    }
+  }
+}

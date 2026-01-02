@@ -1,0 +1,403 @@
+/*
+Theme Name: Waxing Shop Theme
+Theme URI: https://waxing-shop.nl
+Author: Waxing Shop
+Description: Premium WooCommerce theme - Conversion optimized, sets-focused, WCAG 2.1 AA compliant. Includes pillar pages, blog templates, wholesale B2B, and enhanced product pages.
+Version: 5.8
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.0
+License: GPL v2+
+Text Domain: waxing-shop
+WooCommerce: 8.0
+*/
+
+/* ========== CSS VARIABLES ========== */
+:root {
+    /* Brand Colors */
+    --sage: #7D8B75;
+    --sage-dark: #5C6B54;
+    --sage-light: rgba(125,139,117,0.1);
+    --dark: #1a1a1a;
+    --dark-soft: #2a2a2a;
+    --cream: #FAFAF8;
+    --cream-dark: #F5F3F0;
+    --gold: #C4A484;
+    --border: #E8E4DF;
+    --success: #2E7D32;
+    --error: #C62828;
+    --warning: #EF6C00;
+    
+    /* Wax Colors */
+    --wax-rose: #F5E4E6;
+    --wax-rose-dark: #EDD5D8;
+    --wax-gold: #F2E8D5;
+    --wax-gold-dark: #E5D9C4;
+    --wax-sunset: #F7DFD0;
+    --wax-sunset-dark: #EAD0BF;
+    --wax-nacree: #F9F9F7;
+    --wax-nacree-dark: #EEEEEB;
+    
+    /* Typography - System fonts first for speed */
+    --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+    --font-serif: 'DM Serif Display', Georgia, serif;
+    
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 40px;
+    --spacing-xl: 60px;
+    --spacing-2xl: 100px;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 24px;
+    --radius-full: 100px;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.1);
+    --shadow-lg: 0 16px 48px rgba(0,0,0,0.12);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* Focus */
+    --focus-ring: 0 0 0 3px rgba(125,139,117,0.4);
+}
+
+/* ========== DARK MODE (DISABLED - needs full implementation) ========== */
+/* 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --dark: #FAFAF8;
+        --dark-soft: #E8E4DF;
+        --cream: #1a1a1a;
+        --cream-dark: #2a2a2a;
+        --border: #3a3a3a;
+        --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+        --shadow-md: 0 8px 24px rgba(0,0,0,0.4);
+        --shadow-lg: 0 16px 48px rgba(0,0,0,0.5);
+    }
+}
+*/
+
+/* ========== HIGH CONTRAST MODE ========== */
+@media (prefers-contrast: high) {
+    :root {
+        --sage: #4A5D42;
+        --border: #1a1a1a;
+        --shadow-sm: 0 0 0 1px var(--dark);
+    }
+}
+
+/* ========== RESET ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-sans); font-size: 16px; line-height: 1.6; color: var(--dark); background: var(--cream); }
+body.loading { overflow: hidden; }
+body.modal-open { overflow: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+ul, ol { list-style: none; }
+
+/* ========== TYPOGRAPHY ========== */
+h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 1.2; }
+h1 { font-size: clamp(32px, 5vw, 64px); }
+h2 { font-size: clamp(26px, 4vw, 44px); }
+h3 { font-size: clamp(20px, 3vw, 28px); }
+
+/* ========== BUTTONS ========== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: var(--radius-full);
+    font-size: 14px;
+    font-weight: 600;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+}
+.btn-primary { background: var(--dark); color: white; }
+.btn-primary:hover { background: var(--sage); transform: translateY(-2px); }
+.btn-sage { background: var(--sage); color: white; }
+.btn-sage:hover { background: var(--sage-dark); }
+.btn-secondary { background: white; color: var(--dark); border: 2px solid var(--border); }
+.btn-secondary:hover { border-color: var(--sage); color: var(--sage); }
+.btn-outline { background: transparent; color: var(--dark); border: 2px solid var(--dark); }
+.btn-outline:hover { background: var(--dark); color: white; }
+.btn-sm { padding: 10px 20px; font-size: 13px; }
+.btn-lg { padding: 18px 36px; font-size: 15px; }
+.btn-block { width: 100%; }
+
+/* ========== TRUST SIGNALS ========== */
+.trust-bar {
+    background: var(--dark);
+    color: white;
+    padding: 12px var(--spacing-xl);
+    font-size: 13px;
+}
+.trust-bar-inner {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.trust-item svg { width: 16px; height: 16px; color: var(--sage); }
+
+/* Keurmerken */
+.trust-badges {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+}
+.trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #666;
+}
+.trust-badge svg { color: var(--sage); }
+
+/* Urgency */
+.stock-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    padding: 8px 0;
+}
+.stock-indicator.low { color: var(--warning); }
+.stock-indicator.out { color: var(--error); }
+.stock-indicator.in { color: var(--success); }
+.stock-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+}
+.stock-indicator.low .stock-dot { animation: pulse 1.5s infinite; }
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.delivery-estimate {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--success);
+    font-weight: 500;
+}
+
+/* Savings badge */
+.savings-badge {
+    display: inline-block;
+    background: var(--success);
+    color: white;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* ========== CONTAINER ========== */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+}
+@media (max-width: 768px) {
+    .container { padding: 0 var(--spacing-md); }
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(100%); } to { opacity: 1; transform: translateY(0); } }
+
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s var(--transition-smooth); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* ========== LAZY LOADING ========== */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+img[loading="lazy"].loaded,
+img[loading="lazy"]:not([src=""]) {
+    opacity: 1;
+}
+
+/* ========== WOOCOMMERCE OVERRIDES ========== */
+.woocommerce-message,
+.woocommerce-info {
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+    border: none;
+    background: var(--sage-light);
+    color: var(--sage-dark);
+}
+.woocommerce-error {
+    background: #FEE2E2;
+    color: var(--error);
+}
+
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button {
+    background: var(--dark) !important;
+    color: white !important;
+    border-radius: var(--radius-full) !important;
+    padding: 14px 28px !important;
+    font-weight: 600 !important;
+    transition: all var(--transition-base) !important;
+}
+.woocommerce a.button:hover,
+.woocommerce button.button:hover {
+    background: var(--sage) !important;
+}
+.woocommerce a.button.alt,
+.woocommerce button.button.alt {
+    background: var(--sage) !important;
+}
+
+/* Screen reader */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+/* ========== ACCESSIBILITY: FOCUS STATES ========== */
+:focus { outline: none; }
+:focus-visible {
+    outline: 2px solid var(--sage);
+    outline-offset: 2px;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid var(--sage);
+    outline-offset: 2px;
+    box-shadow: var(--focus-ring);
+}
+
+/* Skip to content link */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--dark);
+    color: white;
+    padding: 12px 24px;
+    border-radius: var(--radius-full);
+    z-index: 100000;
+    font-weight: 600;
+    transition: top var(--transition-fast);
+}
+.skip-link:focus {
+    top: 10px;
+}
+
+/* ========== REDUCED MOTION ========== */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+    .site-loader { display: none !important; }
+    .hero-gradient { animation: none; }
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+    /* Hide non-essential elements */
+    .site-header,
+    .site-footer,
+    .trust-bar,
+    .newsletter-section,
+    .newsletter-popup,
+    .quick-view-modal,
+    .modal-overlay,
+    .sticky-atc,
+    .mobile-menu,
+    .product-actions,
+    .product-wishlist,
+    .btn,
+    .filter-btn,
+    .shop-toolbar,
+    .shop-sidebar,
+    nav,
+    .quiz-section,
+    .academy-section {
+        display: none !important;
+    }
+    
+    /* Reset colors for print */
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+    
+    /* Show URLs after links */
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 10pt;
+        color: #666;
+    }
+    
+    /* Product card for print */
+    .product-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+    }
+    
+    /* Ensure images print */
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid;
+    }
+    
+    /* Order confirmation styling */
+    .woocommerce-order {
+        border: 2px solid black;
+        padding: 20px;
+    }
+}

@@ -1,0 +1,614 @@
+/* ==========================================================================
+   WHOLESALE / B2B PAGE STYLES
+   ========================================================================== */
+
+/* ========== WHOLESALE HERO ========== */
+.wholesale-hero {
+    padding-bottom: 60px;
+}
+
+.wholesale-hero .hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
+
+.wholesale-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+}
+
+.badge-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.badge-item svg {
+    color: var(--sage);
+    flex-shrink: 0;
+}
+
+/* ========== PRODUCT CATEGORIES GRID ========== */
+.product-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.category-preview-card {
+    display: block;
+    padding: 32px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.category-preview-card:hover {
+    border-color: var(--sage);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.category-preview-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sage-light);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    color: var(--sage);
+    transition: all var(--transition-base);
+}
+
+.category-preview-card:hover .category-preview-icon {
+    background: var(--sage);
+    color: white;
+}
+
+.category-preview-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--dark);
+}
+
+.category-preview-card p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.category-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--sage);
+}
+
+/* ========== PRICING TABLE ========== */
+.pricing-table-wrapper {
+    overflow-x: auto;
+    margin: 0 -20px;
+    padding: 0 20px;
+}
+
+.pricing-table {
+    width: 100%;
+    min-width: 700px;
+    border-collapse: collapse;
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.pricing-table th,
+.pricing-table td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.pricing-table th {
+    background: var(--dark);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.pricing-table th:first-child {
+    border-radius: var(--radius-lg) 0 0 0;
+}
+
+.pricing-table th:last-child {
+    border-radius: 0 var(--radius-lg) 0 0;
+}
+
+.pricing-table td {
+    font-size: 15px;
+}
+
+.pricing-table td:first-child {
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.pricing-table tbody tr:hover {
+    background: var(--cream);
+}
+
+.pricing-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.pricing-table .discount {
+    display: inline-block;
+    background: var(--success);
+    color: white;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 8px;
+}
+
+.pricing-note {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-top: 24px;
+}
+
+/* ========== TESTIMONIALS GRID ========== */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.testimonial-stars {
+    color: var(--gold);
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.testimonial-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--dark);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.testimonial-author strong {
+    display: block;
+    font-size: 15px;
+    color: var(--dark);
+}
+
+.testimonial-author span {
+    font-size: 13px;
+    color: #666;
+}
+
+/* ========== REGISTER SECTION ========== */
+.register-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .register-wrapper {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+}
+
+.register-content .hero-eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--sage);
+    margin-bottom: 16px;
+}
+
+.register-content h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    margin-bottom: 16px;
+}
+
+.register-content > p {
+    font-size: 17px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+.register-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.register-step {
+    display: flex;
+    gap: 16px;
+}
+
+.register-step .step-number {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sage);
+    color: white;
+    font-weight: 700;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.register-step .step-content strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.register-step .step-content p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Register Form */
+.register-form-card {
+    background: white;
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.register-form-card h3 {
+    font-size: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.register-form .form-group {
+    margin-bottom: 20px;
+}
+
+.register-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.register-form input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    transition: border-color var(--transition-fast);
+}
+
+.register-form input:focus {
+    outline: none;
+    border-color: var(--sage);
+}
+
+.register-form .btn {
+    margin-top: 8px;
+}
+
+.form-note {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-top: 16px;
+}
+
+.form-note a {
+    color: var(--sage);
+    font-weight: 500;
+}
+
+/* ========== CONTACT CTA ========== */
+.contact-options {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.contact-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 28px;
+    background: white;
+    color: var(--sage);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.contact-option:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.contact-option svg {
+    flex-shrink: 0;
+}
+
+/* ========================================
+   GROOTHANDEL / WAXCLUSIVE LANDING PAGE
+   ======================================== */
+
+.groothandel-page {
+    --sage: #87916F;
+    --sage-dark: #6B7A5D;
+    --sage-light: #F5F7F2;
+}
+
+/* Hero */
+.groothandel-hero {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+}
+
+.groothandel-hero .hero-eyebrow {
+    color: var(--sage);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.groothandel-hero .page-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.groothandel-hero .page-title em {
+    font-style: italic;
+    color: var(--sage);
+}
+
+.groothandel-hero .page-intro {
+    font-size: 1.2rem;
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Benefits */
+.groothandel-benefits {
+    padding: 80px 20px;
+    background: var(--sage-light);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.benefit-card {
+    background: white;
+    padding: 32px 24px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.benefit-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.benefit-card p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Products */
+.groothandel-products {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.groothandel-products .section-title {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.groothandel-products .section-subtitle {
+    color: #666;
+    margin-bottom: 48px;
+}
+
+.groothandel-products .product-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.product-cat {
+    padding: 32px 20px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    transition: border-color 0.3s;
+}
+
+.product-cat:hover {
+    border-color: var(--sage);
+}
+
+.cat-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.product-cat h4 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.product-cat p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* CTA Section */
+.groothandel-cta {
+    padding: 80px 20px;
+    background: #f9f7f4;
+}
+
+.cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .cta-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.groothandel-cta .cta-card {
+    background: white;
+    padding: 40px 32px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.groothandel-cta .cta-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+.groothandel-cta .cta-card > p {
+    color: #666;
+    margin-bottom: 24px;
+}
+
+.lead-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lead-form input {
+    padding: 14px 16px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.lead-form input:focus {
+    outline: none;
+    border-color: var(--sage);
+}
+
+.groothandel-cta .form-note {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 12px;
+}
+
+.direct-benefits {
+    list-style: none;
+    padding: 0;
+    margin-top: 24px;
+    text-align: left;
+}
+
+.direct-benefits li {
+    padding: 8px 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.direct-benefits li::before {
+    content: "✓ ";
+    color: var(--sage);
+    font-weight: bold;
+}
+
+/* Trust */
+.groothandel-trust {
+    padding: 60px 20px;
+    background: var(--sage);
+    color: white;
+}
+
+.trust-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.trust-stat {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
