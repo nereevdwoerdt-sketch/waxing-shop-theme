@@ -108,6 +108,7 @@ function waxing_shop_enqueue_scripts() {
     // Components CSS - always load (contains shared components)
     waxing_maybe_enqueue_css('components');
     waxing_maybe_enqueue_css('sections');
+    waxing_maybe_enqueue_css('mobile-fixes');
 
     // Conditionally load page-specific CSS
     if (function_exists('is_woocommerce')) {
