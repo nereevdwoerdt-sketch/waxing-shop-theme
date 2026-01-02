@@ -1110,34 +1110,119 @@
 .quiz-result-price { font-size: 18px; font-weight: 700; }
 
 /* ========== REVIEWS ========== */
-.reviews-section { padding: var(--spacing-2xl) var(--spacing-xl); background: var(--cream); }
-.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
-.review-card { background: white; border-radius: var(--radius-lg); padding: 28px; transition: all var(--transition-smooth); }
-.review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-.review-stars { color: var(--gold); font-size: 16px; margin-bottom: 14px; }
-.review-text { font-size: 15px; line-height: 1.7; color: var(--dark); margin-bottom: 18px; font-style: italic; }
-.review-author { font-weight: 600; margin-bottom: 2px; }
-.review-role { font-size: 12px; color: #888; }
-.review-verified { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--success); margin-top: 8px; }
+.reviews-section {
+    padding: var(--spacing-2xl) var(--spacing-xl);
+    background: var(--cream);
+}
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.review-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    transition: all var(--transition-smooth);
+    border: 1px solid var(--border);
+}
+.review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
+}
+.review-stars {
+    color: var(--gold);
+    font-size: 18px;
+    margin-bottom: 16px;
+    letter-spacing: -2px;
+}
+.review-text {
+    font-size: var(--text-base, 15px);
+    line-height: 1.75;
+    color: var(--text-primary, #1a1a1a);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+.review-author {
+    font-weight: 600;
+    font-size: var(--text-base, 15px);
+    margin-bottom: 4px;
+    color: var(--text-primary, #1a1a1a);
+}
+.review-role {
+    font-size: var(--text-xs, 12px);
+    color: var(--text-muted, #6b6b6b);
+}
+.review-verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--text-xs, 12px);
+    font-weight: 500;
+    color: var(--success);
+    margin-top: 10px;
+}
 
 /* ========== FAQ ========== */
-.faq-section { padding: var(--spacing-2xl) var(--spacing-xl); background: white; }
-.faq-list { max-width: 720px; margin: 0 auto; }
-.faq-item { background: var(--cream); border-radius: var(--radius-md); margin-bottom: 10px; overflow: hidden; }
-.faq-item:hover { background: var(--cream-dark); }
+.faq-section {
+    padding: var(--spacing-2xl) var(--spacing-xl);
+    background: white;
+}
+.faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+}
+.faq-item {
+    background: var(--cream);
+    border-radius: var(--radius-lg);
+    margin-bottom: 12px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    transition: all var(--transition-fast);
+}
+.faq-item:hover {
+    background: var(--cream-dark);
+    border-color: var(--border);
+}
 .faq-question {
-    padding: 18px 22px;
+    padding: 20px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
     font-weight: 600;
-    font-size: 15px;
+    font-size: var(--text-base, 15px);
+    color: var(--text-primary, #1a1a1a);
+    gap: 16px;
 }
-.faq-icon { font-size: 11px; color: var(--sage); transition: transform var(--transition-base); }
-.faq-item.active .faq-icon { transform: rotate(180deg); }
-.faq-answer { padding: 0 22px; max-height: 0; overflow: hidden; transition: all var(--transition-base); font-size: 14px; line-height: 1.7; color: #666; }
-.faq-item.active .faq-answer { padding: 0 22px 18px; max-height: 400px; }
+.faq-question:hover {
+    color: var(--sage-dark);
+}
+.faq-icon {
+    font-size: var(--text-xs, 12px);
+    color: var(--sage);
+    transition: transform var(--transition-base);
+    flex-shrink: 0;
+}
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+.faq-answer {
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all var(--transition-base);
+    font-size: var(--text-sm, 14px);
+    line-height: 1.75;
+    color: var(--text-secondary, #4a4a4a);
+}
+.faq-item.active .faq-answer {
+    padding: 0 24px 24px;
+    max-height: 500px;
+}
 
 /* ========== ACADEMY ========== */
 .academy-section { padding: var(--spacing-2xl) var(--spacing-xl); background: var(--dark); color: white; }
