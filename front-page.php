@@ -204,12 +204,16 @@ get_header();
                     <p class="calc-saving-label"><?php esc_html_e('Jouw besparing per jaar', 'waxing-shop'); ?></p>
                     <p class="calc-saving-value" id="calcSaving">€228</p>
                 </div>
+                <div class="calc-saving-row calc-saving-row-5year">
+                    <p class="calc-saving-label"><?php esc_html_e('In 5 jaar bespaar je', 'waxing-shop'); ?></p>
+                    <p class="calc-saving-value calc-saving-value-5year" id="calcSaving5Year">€1.540</p>
+                </div>
             </div>
 
             <a href="#sets" class="btn btn-sage btn-block"><?php esc_html_e('Bekijk startersets', 'waxing-shop'); ?> →</a>
 
             <p class="calc-note">
-                * <?php esc_html_e('Berekening op basis van Complete Set (€79,95) + 1 refill per jaar (€51,90)', 'waxing-shop'); ?>
+                * <?php esc_html_e('Berekening inclusief jaarlijkse navullingen', 'waxing-shop'); ?>
             </p>
         </div>
     </div>

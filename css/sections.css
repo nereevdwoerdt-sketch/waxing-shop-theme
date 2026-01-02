@@ -806,6 +806,27 @@
     color: var(--sage);
 }
 
+.calc-saving-row-5year {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--border);
+}
+
+.calc-saving-value-5year {
+    font-size: 52px;
+    color: var(--success);
+}
+
+.calc-saving-value.highlight {
+    animation: savingPulse 0.3s ease;
+}
+
+@keyframes savingPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
 .calc-note {
     font-size: 12px;
     color: #999;
