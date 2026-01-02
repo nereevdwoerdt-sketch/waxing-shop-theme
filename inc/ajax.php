@@ -1096,3 +1096,94 @@ function waxing_add_wax_choices_to_order_item($item, $cart_item_key, $values, $o
     }
 }
 add_action('woocommerce_checkout_create_order_line_item', 'waxing_add_wax_choices_to_order_item', 10, 4);
+
+// =============================================
+// MINI CART ENHANCED (With shipping progress)
+// =============================================
+
+/**
+ * Get mini cart data including shipping progress
+ * @since 5.8
+ */
+function waxing_ajax_get_mini_cart() {
+    if (!function_exists('WC') || !WC()->cart) {
+        wp_send_json_success(array(
+            'cart_count' => 0,
+            'cart_total' => wc_price(0),
+            'cart_items' => array(),
+            'shipping_progress' => array(),
+        ));
+    }
+
+    $cart_total = WC()->cart->get_subtotal();
+    $free_shipping_threshold = apply_filters('waxing_free_shipping_threshold', 50);
+    $remaining = max(0, $free_shipping_threshold - $cart_total);
+    $progress = min(100, ($cart_total / $free_shipping_threshold) * 100);
+
+    wp_send_json_success(array(
+        'cart_count'   => WC()->cart->get_cart_contents_count(),
+        'cart_total'   => WC()->cart->get_cart_total(),
+        'cart_subtotal' => wc_price($cart_total),
+        'cart_items'   => waxing_get_mini_cart_items(),
+        'shipping_progress' => array(
+            'threshold'        => $free_shipping_threshold,
+            'current'          => $cart_total,
+            'remaining'        => $remaining,
+            'remaining_formatted' => wc_price($remaining),
+            'progress_percent' => round($progress, 1),
+            'has_free_shipping' => $remaining <= 0,
+            'message' => $remaining > 0
+                ? sprintf(
+                    /* translators: %s: remaining amount */
+                    __('Nog %s voor gratis verzending', 'waxing-shop'),
+                    wc_price($remaining)
+                )
+                : __('Je komt in aanmerking voor gratis verzending!', 'waxing-shop'),
+        ),
+    ));
+}
+add_action('wp_ajax_waxing_get_mini_cart', 'waxing_ajax_get_mini_cart');
+add_action('wp_ajax_nopriv_waxing_get_mini_cart', 'waxing_ajax_get_mini_cart');
+
+/**
+ * Get shipping progress HTML
+ * Can be used in templates and via AJAX
+ */
+function waxing_get_shipping_progress_html() {
+    if (!function_exists('WC') || !WC()->cart) {
+        return '';
+    }
+
+    $cart_total = WC()->cart->get_subtotal();
+    $free_shipping_threshold = apply_filters('waxing_free_shipping_threshold', 50);
+    $remaining = max(0, $free_shipping_threshold - $cart_total);
+    $progress = min(100, ($cart_total / $free_shipping_threshold) * 100);
+
+    ob_start();
+    ?>
+    <div class="cart-shipping-info">
+        <?php if ($remaining > 0) : ?>
+            <p class="shipping-progress">
+                <?php
+                printf(
+                    /* translators: %s: remaining amount */
+                    esc_html__('Nog %s voor gratis verzending!', 'waxing-shop'),
+                    '<strong>' . wc_price($remaining) . '</strong>'
+                );
+                ?>
+            </p>
+            <div class="shipping-progress-bar">
+                <div class="shipping-progress-fill" style="width: <?php echo esc_attr($progress); ?>%"></div>
+            </div>
+        <?php else : ?>
+            <p class="shipping-free">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <?php esc_html_e('Je komt in aanmerking voor gratis verzending!', 'waxing-shop'); ?>
+            </p>
+        <?php endif; ?>
+    </div>
+    <?php
+    return ob_get_clean();
+}

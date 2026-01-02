@@ -2411,6 +2411,18 @@ input.success:focus {
     }
 }
 
+/* Toast Info Variant */
+.waxing-toast.toast-info {
+    background: var(--info);
+    color: white;
+}
+
+.waxing-toast.toast-info .toast-icon::before {
+    content: "i";
+    font-weight: bold;
+    font-style: italic;
+}
+
 /* ========== SKELETON LOADING STATES ========== */
 .skeleton {
     background: linear-gradient(
