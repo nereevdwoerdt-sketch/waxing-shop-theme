@@ -97,18 +97,6 @@ get_header();
     </div>
 </section>
 
-<!-- Academy Section -->
-<section id="academy" class="academy-section section" aria-labelledby="academy-title">
-    <div class="section-header reveal" style="text-align:center;margin-bottom:60px;">
-        <p class="section-eyebrow" style="justify-content:center;color:var(--gold);"><?php esc_html_e('Leer waxen', 'waxing-shop'); ?></p>
-        <h2 class="section-title" id="academy-title" style="color:white;"><?php esc_html_e('Waxing Academy', 'waxing-shop'); ?></h2>
-        <p class="section-subtitle" style="margin:16px auto 0;color:rgba(255,255,255,0.7);"><?php esc_html_e('Gratis handleidingen en video\'s voor het beste resultaat.', 'waxing-shop'); ?></p>
-    </div>
-    
-    <div class="reveal">
-        <?php echo do_shortcode('[academy]'); ?>
-    </div>
-</section>
 
 <!-- Savings Calculator Section -->
 <section id="calculator" class="calculator-section section" style="background:var(--cream-dark);" aria-labelledby="calculator-title">
