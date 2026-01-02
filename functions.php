@@ -102,8 +102,12 @@ function waxing_shop_enqueue_scripts() {
     // Google Fonts
     wp_enqueue_style('waxing-fonts', 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap', array(), null);
 
-    // Main stylesheet
-    wp_enqueue_style('waxing-style', get_stylesheet_uri(), array('waxing-fonts'), WAXING_VERSION);
+    // Main stylesheet (use minified in production)
+    $css_suffix = (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) ? '' : '.min';
+    $style_file = file_exists(WAXING_DIR . '/style' . $css_suffix . '.css')
+        ? WAXING_URI . '/style' . $css_suffix . '.css'
+        : get_stylesheet_uri();
+    wp_enqueue_style('waxing-style', $style_file, array('waxing-fonts'), WAXING_VERSION);
 
     // Components CSS - always load (contains shared components)
     waxing_maybe_enqueue_css('components');
