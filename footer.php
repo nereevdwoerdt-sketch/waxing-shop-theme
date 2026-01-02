@@ -78,18 +78,57 @@
         </div>
     </div>
     
+    <!-- Payment Methods Bar -->
+    <div class="footer-payments-bar">
+        <span class="payment-label"><?php esc_html_e('Veilig betalen met:', 'waxing-shop'); ?></span>
+        <div class="payment-icons" aria-label="<?php esc_attr_e('Betaalmethoden', 'waxing-shop'); ?>">
+            <!-- iDEAL -->
+            <svg class="payment-icon" viewBox="0 0 48 48" width="40" height="26" aria-label="iDEAL">
+                <rect fill="#CC0066" width="48" height="48" rx="4"/>
+                <text x="24" y="30" fill="white" font-size="14" font-weight="bold" text-anchor="middle">iDEAL</text>
+            </svg>
+            <!-- Visa -->
+            <svg class="payment-icon" viewBox="0 0 48 32" width="40" height="26" aria-label="Visa">
+                <rect fill="#1A1F71" width="48" height="32" rx="4"/>
+                <text x="24" y="20" fill="white" font-size="12" font-weight="bold" text-anchor="middle" font-style="italic">VISA</text>
+            </svg>
+            <!-- Mastercard -->
+            <svg class="payment-icon" viewBox="0 0 48 32" width="40" height="26" aria-label="Mastercard">
+                <rect fill="#000" width="48" height="32" rx="4"/>
+                <circle cx="18" cy="16" r="10" fill="#EB001B"/>
+                <circle cx="30" cy="16" r="10" fill="#F79E1B"/>
+                <path d="M24 8.5a10 10 0 0 0 0 15" fill="#FF5F00"/>
+            </svg>
+            <!-- PayPal -->
+            <svg class="payment-icon" viewBox="0 0 48 32" width="40" height="26" aria-label="PayPal">
+                <rect fill="#003087" width="48" height="32" rx="4"/>
+                <text x="24" y="20" fill="white" font-size="10" font-weight="bold" text-anchor="middle">PayPal</text>
+            </svg>
+            <!-- Bancontact -->
+            <svg class="payment-icon" viewBox="0 0 48 32" width="40" height="26" aria-label="Bancontact">
+                <rect fill="#005498" width="48" height="32" rx="4"/>
+                <text x="24" y="20" fill="white" font-size="8" font-weight="bold" text-anchor="middle">Bancontact</text>
+            </svg>
+        </div>
+    </div>
+
     <div class="footer-bottom">
-        <p>
-            © <?php echo date('Y'); ?> Waxing Shop. 
-            <?php esc_html_e('Alle rechten voorbehouden.', 'waxing-shop'); ?>
-        </p>
-        <p class="footer-legal">
-            KvK: [nummer invullen] | BTW: [nummer invullen]
-        </p>
-        <div class="footer-payments" aria-label="<?php esc_attr_e('Betaalmethoden', 'waxing-shop'); ?>">
-            <span title="iDEAL" aria-label="iDEAL">🏦</span>
-            <span title="Creditcard" aria-label="Creditcard">💳</span>
-            <span title="PayPal" aria-label="PayPal">📱</span>
+        <div class="footer-bottom-left">
+            <p>
+                © <?php echo date('Y'); ?> Waxing Shop.
+                <?php esc_html_e('Alle rechten voorbehouden.', 'waxing-shop'); ?>
+            </p>
+            <p class="footer-legal">
+                KvK: 12345678 | BTW: NL123456789B01
+            </p>
+        </div>
+        <div class="footer-bottom-right">
+            <a href="<?php echo esc_url(home_url('/retourbeleid/')); ?>" class="footer-return-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                </svg>
+                <?php esc_html_e('14 dagen retourrecht', 'waxing-shop'); ?>
+            </a>
         </div>
     </div>
 </footer>
