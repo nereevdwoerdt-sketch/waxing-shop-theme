@@ -99,11 +99,11 @@ get_header();
 
 
 <!-- Savings Calculator Section -->
-<section id="calculator" class="calculator-section section" style="background:var(--cream-dark);" aria-labelledby="calculator-title">
-    <div class="section-header reveal" style="text-align:center;margin-bottom:40px;">
-        <p class="section-eyebrow" style="justify-content:center;"><?php esc_html_e('Bespaar honderden euro\'s', 'waxing-shop'); ?></p>
+<section id="calculator" class="calculator-section section section--cream" aria-labelledby="calculator-title">
+    <div class="section-header section-header--centered reveal">
+        <p class="section-eyebrow section-eyebrow--centered"><?php esc_html_e('Bespaar honderden euro\'s', 'waxing-shop'); ?></p>
         <h2 class="section-title" id="calculator-title"><?php esc_html_e('Salon vs. Thuis', 'waxing-shop'); ?></h2>
-        <p class="section-subtitle" style="margin:16px auto 0;"><?php esc_html_e('Ontdek hoeveel je bespaart door zelf te waxen', 'waxing-shop'); ?></p>
+        <p class="section-subtitle section-subtitle--centered"><?php esc_html_e('Ontdek hoeveel je bespaart door zelf te waxen', 'waxing-shop'); ?></p>
     </div>
 
     <div class="reveal">
@@ -217,11 +217,11 @@ get_header();
 
 <!-- FAQ Section -->
 <section id="faq" class="faq-section section" aria-labelledby="faq-title">
-    <div class="section-header reveal" style="text-align:center;margin-bottom:60px;">
-        <p class="section-eyebrow" style="justify-content:center;"><?php esc_html_e('Antwoorden op je vragen', 'waxing-shop'); ?></p>
+    <div class="section-header section-header--centered reveal">
+        <p class="section-eyebrow section-eyebrow--centered"><?php esc_html_e('Antwoorden op je vragen', 'waxing-shop'); ?></p>
         <h2 class="section-title" id="faq-title"><?php esc_html_e('Veelgestelde vragen', 'waxing-shop'); ?></h2>
     </div>
-    
+
     <div class="reveal">
         <?php echo do_shortcode('[faq]'); ?>
     </div>
