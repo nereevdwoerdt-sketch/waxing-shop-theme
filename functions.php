@@ -161,13 +161,23 @@ add_action('wp_enqueue_scripts', 'waxing_shop_enqueue_scripts');
 
 /**
  * Helper to conditionally enqueue CSS if file exists
+ * Uses minified version in production
  *
  * @param string $file CSS filename without extension
  */
 function waxing_maybe_enqueue_css($file) {
-    $path = WAXING_DIR . '/css/' . $file . '.css';
+    $use_min = !(defined('SCRIPT_DEBUG') && SCRIPT_DEBUG);
+    $suffix = $use_min ? '.min.css' : '.css';
+    $path = WAXING_DIR . '/css/' . $file . $suffix;
+
+    // Fallback to non-minified if minified doesn't exist
+    if (!file_exists($path)) {
+        $suffix = '.css';
+        $path = WAXING_DIR . '/css/' . $file . '.css';
+    }
+
     if (file_exists($path)) {
-        wp_enqueue_style('waxing-' . $file, WAXING_URI . '/css/' . $file . '.css', array('waxing-style'), WAXING_VERSION);
+        wp_enqueue_style('waxing-' . $file, WAXING_URI . '/css/' . $file . $suffix, array('waxing-style'), WAXING_VERSION);
     }
 }
 
