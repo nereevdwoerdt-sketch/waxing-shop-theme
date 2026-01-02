@@ -222,6 +222,19 @@ add_action('wp_head', function() {
     echo '<link rel="preload" href="https://fonts.gstatic.com/s/dmserifdisplay/v15/-nFnOHM81r4j6k0gjAW3mujVU2B2G_5x0g.woff2" as="font" type="font/woff2" crossorigin>' . "\n";
 }, 1);
 
+// Inline critical CSS for faster FCP
+add_action('wp_head', function() {
+    $critical_css = WAXING_DIR . '/css/critical.css';
+    if (file_exists($critical_css)) {
+        $css = file_get_contents($critical_css);
+        // Minify: remove comments, extra whitespace
+        $css = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css);
+        $css = preg_replace('/\s+/', ' ', $css);
+        $css = str_replace(array(' {', '{ ', ' }', '} ', ': ', ' :', ', ', ' ,', '; ', ' ;'), array('{', '{', '}', '}', ':', ':', ',', ',', ';', ';'), $css);
+        echo '<style id="critical-css">' . trim($css) . '</style>' . "\n";
+    }
+}, 2);
+
 /**
  * Load includes - with existence check
  * Note: config.php is loaded first at the top of this file
