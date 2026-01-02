@@ -275,13 +275,8 @@
         $menu.find('a').on('click', function() {
             $toggle.removeClass('active');
             $menu.removeClass('active');
-            $('body').removeClass('menu-open').css({
-                'overflow': '',
-                'position': '',
-                'top': '',
-                'width': ''
-            });
-            window.scrollTo(0, scrollPosition);
+            $('body').removeClass('menu-open');
+            scrollLock.unlock();
             $toggle.attr('aria-expanded', 'false');
             $menu.attr('aria-hidden', 'true');
             releaseFocus($menu);
