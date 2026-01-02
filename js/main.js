@@ -31,6 +31,30 @@
     }
 
     /**
+     * Body Scroll Lock - Prevents background scroll on iOS
+     * when modals/menus are open
+     */
+    var scrollLock = {
+        scrollPosition: 0,
+
+        lock: function() {
+            this.scrollPosition = window.pageYOffset;
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.top = -this.scrollPosition + 'px';
+            document.body.style.width = '100%';
+        },
+
+        unlock: function() {
+            document.body.style.removeProperty('overflow');
+            document.body.style.removeProperty('position');
+            document.body.style.removeProperty('top');
+            document.body.style.removeProperty('width');
+            window.scrollTo(0, this.scrollPosition);
+        }
+    };
+
+    /**
      * Show toast notification to user
      * @param {string} message - The message to display
      * @param {string} type - 'success', 'error', or 'info'
