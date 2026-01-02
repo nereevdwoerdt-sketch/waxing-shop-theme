@@ -8,6 +8,55 @@
 
 defined('ABSPATH') || exit;
 
+/**
+ * Cloudflare Tunnel URL Replacement
+ * Replaces local URLs with tunnel URL when accessed via Cloudflare
+ */
+function waxing_tunnel_url_filter($buffer) {
+    // Check if request is coming through Cloudflare
+    if (isset($_SERVER['HTTP_CF_CONNECTING_IP']) || isset($_SERVER['HTTP_CF_RAY'])) {
+        // Get the tunnel URL from referer or a custom header
+        $tunnel_url = '';
+
+        if (isset($_SERVER['HTTP_CF_VISITOR'])) {
+            $visitor = json_decode($_SERVER['HTTP_CF_VISITOR'], true);
+            if (isset($visitor['scheme'])) {
+                $tunnel_url = $visitor['scheme'] . '://';
+            }
+        }
+
+        // Try to get from referer
+        if (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'trycloudflare.com') !== false) {
+            preg_match('/https?:\/\/[^\/]+/', $_SERVER['HTTP_REFERER'], $matches);
+            if (!empty($matches[0])) {
+                $tunnel_url = $matches[0];
+            }
+        }
+
+        // Fallback: check Origin header
+        if (empty($tunnel_url) && isset($_SERVER['HTTP_ORIGIN']) && strpos($_SERVER['HTTP_ORIGIN'], 'trycloudflare.com') !== false) {
+            $tunnel_url = $_SERVER['HTTP_ORIGIN'];
+        }
+
+        // Replace URLs if we found a tunnel URL
+        if (!empty($tunnel_url)) {
+            $buffer = str_replace(
+                array('http://waxing-shop.local', 'https://waxing-shop.local'),
+                $tunnel_url,
+                $buffer
+            );
+        }
+    }
+    return $buffer;
+}
+
+// Only enable when Cloudflare headers are present
+if (isset($_SERVER['HTTP_CF_CONNECTING_IP']) || isset($_SERVER['HTTP_CF_RAY'])) {
+    add_action('template_redirect', function() {
+        ob_start('waxing_tunnel_url_filter');
+    });
+}
+
 // Load config constants first
 require_once get_template_directory() . '/inc/config.php';
 
