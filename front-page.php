@@ -46,28 +46,28 @@ get_header();
 
 <!-- Starter Sets Section -->
 <section id="sets" class="sets-section section" aria-labelledby="sets-title">
-    <div class="section-header reveal" style="text-align:center;margin-bottom:60px;">
-        <p class="section-eyebrow" style="justify-content:center;"><?php esc_html_e('Van nul naar zijdezacht', 'waxing-shop'); ?></p>
+    <div class="section-header reveal section-header--centered">
+        <p class="section-eyebrow section-eyebrow--centered"><?php esc_html_e('Van nul naar zijdezacht', 'waxing-shop'); ?></p>
         <h2 class="section-title" id="sets-title"><?php esc_html_e('Complete startersets', 'waxing-shop'); ?></h2>
-        <p class="section-subtitle" style="margin:16px auto 0;"><?php esc_html_e('Alles wat je nodig hebt in één pakket. Inclusief handleiding. Direct beginnen.', 'waxing-shop'); ?></p>
+        <p class="section-subtitle section-subtitle--centered"><?php esc_html_e('Alles wat je nodig hebt in één pakket. Inclusief handleiding. Direct beginnen.', 'waxing-shop'); ?></p>
     </div>
-    
+
     <div class="reveal">
         <?php echo do_shortcode('[starter_sets]'); ?>
     </div>
 </section>
 
 <!-- Products Section -->
-<section id="products" class="section" style="background:var(--cream-dark);" aria-labelledby="products-title">
-    <div class="section-header reveal" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;max-width:1200px;margin-left:auto;margin-right:auto;">
+<section id="products" class="section section--cream" aria-labelledby="products-title">
+    <div class="section-header section-header--split reveal">
         <div>
             <p class="section-eyebrow"><?php esc_html_e('Losse producten', 'waxing-shop'); ?></p>
             <h2 class="section-title" id="products-title"><?php esc_html_e('Hotwax collectie', 'waxing-shop'); ?></h2>
         </div>
         <a href="<?php echo esc_url(function_exists('wc_get_page_permalink') ? wc_get_page_permalink('shop') : '/shop'); ?>" class="btn btn-secondary"><?php esc_html_e('Bekijk alles', 'waxing-shop'); ?> →</a>
     </div>
-    
-    <div class="reveal" style="max-width:1200px;margin:0 auto;">
+
+    <div class="reveal section-content--contained">
         <?php echo do_shortcode('[waxing_products count="4"]'); ?>
     </div>
 </section>

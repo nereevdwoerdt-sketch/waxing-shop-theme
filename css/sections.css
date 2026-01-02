@@ -41,6 +41,22 @@
     line-height: 1.7;
 }
 
+/* Section modifier classes - cleaner than inline styles */
+.section-header--centered {
+    text-align: center;
+    margin-bottom: 56px;
+}
+.section-eyebrow--centered {
+    justify-content: center;
+}
+.section-eyebrow--centered::before {
+    display: none;
+}
+.section-subtitle--centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* ========== HERO ========== */
 .hero-section {
     min-height: 85vh;
