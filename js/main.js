@@ -2391,11 +2391,13 @@
         var $calcSalon = $('#calcSalon');
         var $calcHome = $('#calcHome');
         var $calcSaving = $('#calcSaving');
+        var $calcSaving5Year = $('#calcSaving5Year');
 
         // Only run if calculator exists
         if (!$calcZones.length) return;
 
         var HOME_COST = 132; // Complete Set (€79.95) + 1 refill (€51.90)
+        var YEARLY_REFILL_COST = 52; // Extra refill cost per year after first year
 
         function calculate() {
             var totalZonePrice = 0;
@@ -2410,28 +2412,47 @@
             // Get frequency
             var frequency = parseInt($calcFreq.val()) || 8;
 
-            // Calculate salon cost
-            var salonCost = totalZonePrice * frequency;
+            // Calculate salon cost per year
+            var salonCostPerYear = totalZonePrice * frequency;
 
             // Calculate home cost (increases slightly with more zones)
-            var homeCost = HOME_COST;
+            var homeFirstYearCost = HOME_COST;
             if (checkedCount > 2) {
                 // Add a bit more for extra wax needed
-                homeCost += (checkedCount - 2) * 20;
+                homeFirstYearCost += (checkedCount - 2) * 20;
             }
 
-            // Calculate savings
-            var saving = salonCost - homeCost;
+            // Calculate yearly savings (first year)
+            var yearlySaving = salonCostPerYear - homeFirstYearCost;
+
+            // Calculate 5-year totals
+            var salonCost5Year = salonCostPerYear * 5;
+            var homeCost5Year = homeFirstYearCost + (YEARLY_REFILL_COST * 4); // First year + 4 refills
+            if (checkedCount > 2) {
+                homeCost5Year += (checkedCount - 2) * 15 * 4; // Extra wax for more zones
+            }
+            var saving5Year = salonCost5Year - homeCost5Year;
 
             // Update display
-            $calcSalon.text('€' + salonCost);
-            $calcHome.text('€' + homeCost);
-            $calcSaving.text('€' + Math.max(0, saving));
+            $calcSalon.text('€' + salonCostPerYear);
+            $calcHome.text('€' + homeFirstYearCost);
+            $calcSaving.text('€' + Math.max(0, yearlySaving));
+
+            // Update 5-year display if element exists
+            if ($calcSaving5Year.length) {
+                $calcSaving5Year.text('€' + Math.max(0, saving5Year));
+            }
 
             // Add animation effect
             $calcSaving.addClass('highlight');
+            if ($calcSaving5Year.length) {
+                $calcSaving5Year.addClass('highlight');
+            }
             setTimeout(function() {
                 $calcSaving.removeClass('highlight');
+                if ($calcSaving5Year.length) {
+                    $calcSaving5Year.removeClass('highlight');
+                }
             }, 300);
         }
 
