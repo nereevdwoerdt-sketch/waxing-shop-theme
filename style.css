@@ -139,22 +139,68 @@ h3 { font-size: clamp(20px, 3vw, 28px); }
     gap: 8px;
     padding: 14px 28px;
     border-radius: var(--radius-full);
-    font-size: 14px;
+    font-size: var(--text-sm);
     font-weight: 600;
     transition: all var(--transition-base);
     white-space: nowrap;
+    cursor: pointer;
+    border: 2px solid transparent;
 }
-.btn-primary { background: var(--dark); color: white; }
-.btn-primary:hover { background: var(--sage); transform: translateY(-2px); }
-.btn-sage { background: var(--sage); color: white; }
-.btn-sage:hover { background: var(--sage-dark); }
-.btn-secondary { background: white; color: var(--dark); border: 2px solid var(--border); }
-.btn-secondary:hover { border-color: var(--sage); color: var(--sage); }
-.btn-outline { background: transparent; color: var(--dark); border: 2px solid var(--dark); }
-.btn-outline:hover { background: var(--dark); color: white; }
-.btn-sm { padding: 10px 20px; font-size: 13px; }
-.btn-lg { padding: 18px 36px; font-size: 15px; }
-.btn-block { width: 100%; }
+.btn:active {
+    transform: translateY(1px);
+}
+.btn-primary {
+    background: var(--dark);
+    color: white;
+    border-color: var(--dark);
+}
+.btn-primary:hover {
+    background: var(--dark-soft);
+    border-color: var(--dark-soft);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+.btn-sage {
+    background: var(--sage);
+    color: white;
+    border-color: var(--sage);
+}
+.btn-sage:hover {
+    background: var(--sage-dark);
+    border-color: var(--sage-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+.btn-secondary {
+    background: white;
+    color: var(--dark);
+    border: 2px solid var(--border);
+}
+.btn-secondary:hover {
+    border-color: var(--sage);
+    color: var(--sage);
+    background: var(--sage-light);
+}
+.btn-outline {
+    background: transparent;
+    color: var(--dark);
+    border: 2px solid var(--dark);
+}
+.btn-outline:hover {
+    background: var(--dark);
+    color: white;
+}
+.btn-sm {
+    padding: 10px 20px;
+    font-size: var(--text-xs);
+}
+.btn-lg {
+    padding: 18px 36px;
+    font-size: var(--text-base);
+}
+.btn-block {
+    width: 100%;
+}
 
 /* ========== TRUST SIGNALS ========== */
 .trust-bar {

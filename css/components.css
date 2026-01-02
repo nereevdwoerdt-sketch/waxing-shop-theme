@@ -580,28 +580,61 @@
 .btn-add-cart.added { background: var(--success); }
 
 /* Card info */
-.product-card-info { padding: 18px; }
+.product-card-info {
+    padding: 20px;
+}
 .product-card-category {
-    font-size: 11px;
+    font-size: var(--text-xs, 12px);
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--sage);
-    margin-bottom: 4px;
+    color: var(--sage-dark);
+    margin-bottom: 6px;
 }
 .product-card-name {
     font-family: var(--font-serif);
-    font-size: 18px;
-    margin-bottom: 4px;
+    font-size: var(--text-lg, 18px);
+    margin-bottom: 6px;
     transition: color var(--transition-fast);
+    color: var(--text-primary, #1a1a1a);
 }
-.product-card:hover .product-card-name { color: var(--sage); }
-.product-card-tagline { font-size: 13px; color: #888; margin-bottom: 10px; }
-.product-card-footer { display: flex; justify-content: space-between; align-items: center; }
-.product-card-price { font-size: 17px; font-weight: 700; }
-.product-card-price-old { font-size: 13px; color: #999; text-decoration: line-through; margin-right: 6px; }
-.product-card-rating { display: flex; align-items: center; gap: 5px; font-size: 12px; }
-.product-card-rating .stars { color: var(--gold); }
-.product-card-rating .count { color: #888; }
+.product-card:hover .product-card-name {
+    color: var(--sage);
+}
+.product-card-tagline {
+    font-size: var(--text-sm, 13px);
+    color: var(--text-muted, #6b6b6b);
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+.product-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.product-card-price {
+    font-size: var(--text-lg, 18px);
+    font-weight: 700;
+    color: var(--text-primary, #1a1a1a);
+}
+.product-card-price-old {
+    font-size: var(--text-sm, 13px);
+    color: var(--text-light, #8a8a8a);
+    text-decoration: line-through;
+    margin-right: 8px;
+}
+.product-card-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--text-xs, 12px);
+}
+.product-card-rating .stars {
+    color: var(--gold);
+}
+.product-card-rating .count {
+    color: var(--text-muted, #6b6b6b);
+}
 
 /* Stock indicator on card */
 .product-card-stock {
