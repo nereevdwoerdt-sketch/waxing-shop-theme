@@ -1532,6 +1532,61 @@ textarea:focus-visible {
     box-shadow: 0 0 0 3px rgba(125, 132, 113, 0.15);
 }
 
+/* ========== FORM VALIDATION STATES ========== */
+.form-field.error input,
+.form-field.error select,
+.form-field.error textarea,
+input.error,
+select.error,
+textarea.error {
+    border-color: var(--error) !important;
+    background-color: rgba(198, 40, 40, 0.05);
+}
+
+.form-field.error input:focus,
+input.error:focus {
+    box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.15);
+}
+
+.form-error-message {
+    color: var(--error);
+    font-size: 13px;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-error-message::before {
+    content: "⚠";
+    font-size: 14px;
+}
+
+/* Success State */
+.form-field.success input,
+input.success {
+    border-color: var(--success) !important;
+}
+
+.form-field.success input:focus,
+input.success:focus {
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+}
+
+.form-success-message {
+    color: var(--success);
+    font-size: 13px;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-success-message::before {
+    content: "✓";
+    font-weight: bold;
+}
+
 /* Card focus (for keyboard navigation) */
 .product-card:focus-within {
     box-shadow: var(--shadow-lg), 0 0 0 2px var(--sage);
@@ -2354,4 +2409,73 @@ textarea:focus-visible {
     .waxing-toast.visible {
         transform: translateX(0) translateY(0);
     }
+}
+
+/* ========== SKELETON LOADING STATES ========== */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--cream) 25%,
+        var(--cream-dark) 50%,
+        var(--cream) 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+    border-radius: var(--radius-sm);
+}
+
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.skeleton-text {
+    height: 1em;
+    margin-bottom: 0.5em;
+}
+
+.skeleton-text:last-child {
+    width: 80%;
+}
+
+.skeleton-image {
+    aspect-ratio: 1;
+    width: 100%;
+}
+
+.skeleton-button {
+    height: 48px;
+    width: 150px;
+}
+
+/* Product Card Skeleton */
+.product-card-skeleton {
+    padding: 18px;
+}
+
+.product-card-skeleton .skeleton-image {
+    margin-bottom: 16px;
+}
+
+.product-card-skeleton .skeleton-text {
+    height: 14px;
+}
+
+/* ========== NAVIGATION ACTIVE STATE ========== */
+.nav-link.current-menu-item,
+.nav-link.current-page-ancestor,
+.nav-link[aria-current="page"] {
+    color: var(--sage);
+    font-weight: 600;
+}
+
+.nav-link.current-menu-item::after,
+.nav-link[aria-current="page"]::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--sage);
 }
