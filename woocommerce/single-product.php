@@ -390,40 +390,46 @@ while (have_posts()) :
     </div>
     
     <!-- Related Products -->
-    <section class="related-products section">
-        <div class="container">
-            <div class="section-header" style="text-align:center;margin-bottom:48px;">
-                <p class="section-eyebrow" style="justify-content:center;">Bekijk ook</p>
-                <h2 class="section-title">Gerelateerde producten</h2>
-            </div>
-            
-            <?php
-            $related_ids = wc_get_related_products($product_id, 4);
-            if ($related_ids) :
-                $args = array(
-                    'post_type' => 'product',
-                    'posts_per_page' => 4,
-                    'post__in' => $related_ids,
-                    'orderby' => 'post__in'
-                );
-                $related_query = new WP_Query($args);
-                
-                if ($related_query->have_posts()) :
+    <?php
+    $related_ids = wc_get_related_products($product_id, 4);
+    if ($related_ids) :
+        $args = array(
+            'post_type' => 'product',
+            'posts_per_page' => 4,
+            'post__in' => $related_ids,
+            'orderby' => 'post__in'
+        );
+        $related_query = new WP_Query($args);
+
+        if ($related_query->have_posts()) :
+    ?>
+    <section class="related-products">
+        <div class="related-header">
+            <h3><?php esc_html_e('Anderen bekeken ook', 'waxing-shop'); ?></h3>
+        </div>
+
+        <div class="related-grid">
+            <?php while ($related_query->have_posts()) : $related_query->the_post();
+                $rel_product = wc_get_product(get_the_ID());
             ?>
-            <div class="products-grid">
-                <?php
-                while ($related_query->have_posts()) : $related_query->the_post();
-                    wc_get_template_part('content', 'product');
-                endwhile;
-                wp_reset_postdata();
-                ?>
-            </div>
-            <?php 
-                endif;
-            endif;
-            ?>
+            <a href="<?php the_permalink(); ?>" class="related-item">
+                <div class="related-image">
+                    <?php if (has_post_thumbnail()) : ?>
+                        <?php the_post_thumbnail('thumbnail'); ?>
+                    <?php endif; ?>
+                </div>
+                <div class="related-info">
+                    <p class="related-title"><?php the_title(); ?></p>
+                    <p class="related-price"><?php echo $rel_product->get_price_html(); ?></p>
+                </div>
+            </a>
+            <?php endwhile; wp_reset_postdata(); ?>
         </div>
     </section>
+    <?php
+        endif;
+    endif;
+    ?>
     
 </main>
 
