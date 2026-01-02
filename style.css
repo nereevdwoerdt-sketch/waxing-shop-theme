@@ -27,7 +27,13 @@ WooCommerce: 8.0
     --success: #2E7D32;
     --error: #C62828;
     --warning: #EF6C00;
-    
+
+    /* Text Colors - Use these instead of hardcoded values */
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6b6b6b;
+    --text-light: #8a8a8a;
+
     /* Wax Colors */
     --wax-rose: #F5E4E6;
     --wax-rose-dark: #EDD5D8;
@@ -37,11 +43,19 @@ WooCommerce: 8.0
     --wax-sunset-dark: #EAD0BF;
     --wax-nacree: #F9F9F7;
     --wax-nacree-dark: #EEEEEB;
-    
+
     /* Typography - System fonts first for speed */
     --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
     --font-serif: 'DM Serif Display', Georgia, serif;
-    
+
+    /* Font Sizes - Consistent scale */
+    --text-xs: 12px;
+    --text-sm: 13px;
+    --text-base: 15px;
+    --text-md: 16px;
+    --text-lg: 18px;
+    --text-xl: 20px;
+
     /* Spacing */
     --spacing-xs: 8px;
     --spacing-sm: 16px;
@@ -49,24 +63,28 @@ WooCommerce: 8.0
     --spacing-lg: 40px;
     --spacing-xl: 60px;
     --spacing-2xl: 100px;
-    
+
+    /* Layout */
+    --container-max: 1200px;
+    --container-wide: 1400px;
+
     /* Border Radius */
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 20px;
     --radius-xl: 24px;
     --radius-full: 100px;
-    
+
     /* Shadows */
     --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
     --shadow-md: 0 8px 24px rgba(0,0,0,0.1);
     --shadow-lg: 0 16px 48px rgba(0,0,0,0.12);
-    
+
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-base: 0.3s ease;
     --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    
+
     /* Focus */
     --focus-ring: 0 0 0 3px rgba(125,139,117,0.4);
 }
