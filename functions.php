@@ -143,8 +143,9 @@ function waxing_shop_enqueue_scripts() {
         waxing_maybe_enqueue_css('wholesale');
     }
 
-    // Main JavaScript
-    wp_enqueue_script('waxing-main', WAXING_URI . '/js/main.js', array(), WAXING_VERSION, true);
+    // Main JavaScript (use minified in production)
+    $js_file = (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) ? '/js/main.js' : '/js/main.min.js';
+    wp_enqueue_script('waxing-main', WAXING_URI . $js_file, array(), WAXING_VERSION, true);
 
     wp_localize_script('waxing-main', 'waxingShop', array(
         'ajaxUrl'  => admin_url('admin-ajax.php'),
