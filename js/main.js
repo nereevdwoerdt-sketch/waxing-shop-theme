@@ -238,7 +238,6 @@
     function initMobileMenu() {
         var $toggle = $('#mobileMenuToggle');
         var $menu = $('#mobileMenu');
-        var scrollPosition = 0;
 
         $toggle.on('click', function() {
             var isOpen = $(this).hasClass('active');
@@ -247,23 +246,11 @@
             $menu.toggleClass('active');
             $('body').toggleClass('menu-open');
 
-            // Prevent body scroll when menu is open
+            // Prevent body scroll when menu is open (iOS fix)
             if (!isOpen) {
-                scrollPosition = window.pageYOffset;
-                $('body').css({
-                    'overflow': 'hidden',
-                    'position': 'fixed',
-                    'top': -scrollPosition + 'px',
-                    'width': '100%'
-                });
+                scrollLock.lock();
             } else {
-                $('body').css({
-                    'overflow': '',
-                    'position': '',
-                    'top': '',
-                    'width': ''
-                });
-                window.scrollTo(0, scrollPosition);
+                scrollLock.unlock();
             }
 
             // ARIA
