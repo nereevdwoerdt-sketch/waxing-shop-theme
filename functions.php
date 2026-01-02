@@ -187,6 +187,42 @@ function waxing_shop_widgets_init() {
 add_action('widgets_init', 'waxing_shop_widgets_init');
 
 /**
+ * Performance Optimizations
+ */
+// Add fetchpriority="high" to LCP image (hero/logo)
+add_filter('wp_get_attachment_image_attributes', function($attr, $attachment, $size) {
+    // Hero images and logos get high priority
+    if (is_front_page() && in_array($size, array('full', 'large', 'hero'))) {
+        $attr['fetchpriority'] = 'high';
+        $attr['decoding'] = 'async';
+        unset($attr['loading']); // Remove lazy for above-fold
+    }
+    return $attr;
+}, 10, 3);
+
+// Optimize image loading attributes
+add_filter('the_content', function($content) {
+    // Add loading="lazy" and decoding="async" to images without these attributes
+    $content = preg_replace(
+        '/<img((?![^>]*loading=)[^>]*)>/i',
+        '<img$1 loading="lazy">',
+        $content
+    );
+    $content = preg_replace(
+        '/<img((?![^>]*decoding=)[^>]*)>/i',
+        '<img$1 decoding="async">',
+        $content
+    );
+    return $content;
+}, 99);
+
+// Preload critical fonts
+add_action('wp_head', function() {
+    echo '<link rel="preload" href="https://fonts.gstatic.com/s/dmsans/v15/rP2Hp2ywxg089UriCZOIHQ.woff2" as="font" type="font/woff2" crossorigin>' . "\n";
+    echo '<link rel="preload" href="https://fonts.gstatic.com/s/dmserifdisplay/v15/-nFnOHM81r4j6k0gjAW3mujVU2B2G_5x0g.woff2" as="font" type="font/woff2" crossorigin>' . "\n";
+}, 1);
+
+/**
  * Load includes - with existence check
  * Note: config.php is loaded first at the top of this file
  */
